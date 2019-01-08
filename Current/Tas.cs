@@ -151,7 +151,7 @@ public class Tas : MonoBehaviour
         }
         GUI.Label(new Rect(50f, (float)(Screen.height - 90), 200f, 200f), this.currentFrameCount.ToString(), this.guiStyle);
         GUI.Label(new Rect(100f, (float)(Screen.height - 90), 200f, 200f), this.currentTotalFrames.ToString(), this.guiStyle);
-        if (this.isPos)
+        if (this.cmdType == Tas.CmdType.MoveTo)
         {
             GUI.Label(new Rect(50f, (float)(Screen.height - 70), 200f, 200f), string.Format("To {0}", this.toX), this.guiStyle);
         }

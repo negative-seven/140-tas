@@ -12,7 +12,9 @@ public class MyCharacterController : GroundbasedController
         this.activeFloatZones = new IFloatPlayer[10];
         this.rigidBody2D = base.GetComponent<Rigidbody2D>();
         this.extraBoxColl = this.colliderObject.GetComponent<BoxCollider2D>();
-        Globals.levelsManager != null;
+        if (Globals.levelsManager != null)
+        {
+        }
         if (this.facingGfx)
         {
             this.facingGfxDist = Mathf.Abs(this.facingGfx.transform.localPosition.x);
@@ -135,10 +137,10 @@ public class MyCharacterController : GroundbasedController
     }
 
     // New method
-	public bool IsControlPaused()
-	{
-		return this.controlPaused;
-	}
+    public bool IsControlPaused()
+    {
+        return this.controlPaused;
+    }
 
     private Tas tas; // Added line
 }
