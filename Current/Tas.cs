@@ -75,6 +75,10 @@ public class Tas : MonoBehaviour
         {
             this.cmdType = Tas.CmdType.SetPos;
         }
+		else if (array[0].ToLower() == "offsetpos" && array.Length >= 3)
+        {
+            this.cmdType = Tas.CmdType.OffsetPos;
+        }
         else
             return;
 
@@ -101,6 +105,12 @@ public class Tas : MonoBehaviour
             float x = float.Parse(array[1]);
             float y = float.Parse(array[2]);
             base.transform.position = new Vector3(x, y, base.transform.position.z);
+            this.RegisterInputs(array, 3);
+            return;
+        case Tas.CmdType.OffsetPos:
+            float x2 = float.Parse(array[1]);
+            float y2 = float.Parse(array[2]);
+            base.transform.position += new Vector3(x2, y2, 0f);
             this.RegisterInputs(array, 3);
             return;
         default:
@@ -191,6 +201,7 @@ public class Tas : MonoBehaviour
     private bool IsCurrentLineDone()
     {
         return this.cmdType == Tas.CmdType.SetPos
+			|| this.cmdType == Tas.CmdType.OffsetPos
             || (this.cmdType == Tas.CmdType.MoveTo && ((Tas.right && base.transform.position.x >= this.toX) || (Tas.left && base.transform.position.x <= this.toX)))
             || this.currentFrameCount == this.currentTotalFrames;
     }
@@ -270,6 +281,7 @@ public class Tas : MonoBehaviour
     {
         RegularInput,
         MoveTo,
-        SetPos
+        SetPos,
+        OffsetPos
     }
 }
