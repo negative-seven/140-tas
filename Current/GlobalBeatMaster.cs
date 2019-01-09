@@ -26,15 +26,15 @@ public partial class GlobalBeatMaster : MonoBehaviour
 		{
 			num2 += this.masterLoop.clip.length;
 		}
-		this.time += Time.deltaTime;
+		this.time += Time.deltaTime; // Modified line
 		Globals.musicTimeSinceLevelLoad = this.time;
-		this.beatTimer -= Time.deltaTime;
+		this.beatTimer -= Time.deltaTime; // Modified line
 		if (this.beatTimer < 0f)
 		{
 			this.hit();
 			this.beatTimer += this.masterLoop.clip.length / 64f;
 		}
-		this.highResBeatTimer -= Time.deltaTime;
+		this.highResBeatTimer -= Time.deltaTime; // Modified line
 		if (this.highResBeatTimer < 0f)
 		{
 			if (this.onHighResBeat != null)
